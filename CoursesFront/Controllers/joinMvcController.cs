@@ -3,6 +3,7 @@ using CourseApi.Models.Entity;
 using CourseApi.Models.viewModel;
 //using CoursesFront.Models.viewModel;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,11 +30,14 @@ namespace CoursesFront.Controllers
                     ModelState.AddModelError(string.Empty, "there is an error");
                 };
 
-                var allInastuate = await client.GetAsync("http://localhost:49798/api/Course/get-all-courses");
-                if (responseTask.IsSuccessStatusCode)
+
+                var allInastuate = await client.GetAsync("http://localhost:49798/get-all-institutes");
+                if (allInastuate.IsSuccessStatusCode)
                 {
-                    List<Course> listOFCourse = responseTask.Content.ReadAsAsync<List<Course>>().Result;
-                    course = listOFCourse;
+                    var listOFCourse = allInastuate.Content.ReadAsAsync<List<InstuateVM>>().Result;
+                    ViewBag.AllInstuates = new SelectList(listOFCourse, "instituteId", "instituteName");
+
+                    ViewBag.AllInstuate = listOFCourse;
                 }
                 else
                 {
@@ -43,7 +47,6 @@ namespace CoursesFront.Controllers
             }
             return View(course);
         }
-
 
 
 
@@ -86,7 +89,7 @@ namespace CoursesFront.Controllers
             IEnumerable<Course> instituteSearch = null;
             HttpClient hc = new HttpClient();
 
-            hc.BaseAddress = new Uri("http://localhost:49798/api/course/");
+            hc.BaseAddress = new Uri("http://localhost:49798/api/Course/");
             var result = hc.GetAsync("get-all-Institutes-byName/" + name);
             result.Wait();
 
@@ -104,6 +107,8 @@ namespace CoursesFront.Controllers
             };
             return View(instituteSearch);
         }
+
+       
 
 
     }

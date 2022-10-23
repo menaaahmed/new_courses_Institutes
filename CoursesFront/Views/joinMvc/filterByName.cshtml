@@ -1,1 +1,36 @@
-﻿bb
+﻿@model IEnumerable<CourseApi.Models.Entity.Course>
+@{
+    ViewData["Title"] = "filterByName";
+}
+
+<h1>filterByName</h1>
+
+
+
+
+<div class="container">
+    <div class="card-group mt-lg-5">
+        @foreach (var item in Model)
+        {
+            <div class="col-lg-3 mb-4 ">
+                <div class="card">
+                    <img class="card-img-top" src="/imgs/1.jpg">
+                    <div class="card-body ">
+                        <h5 class="card-title">@Html.DisplayFor(model => item.CourseName)</h5>
+                        @*<p class="col-sm-10">
+                            @Html.DisplayFor(model => item.Institute.InstituteName)
+                        </p>*@
+                        <p class="col-sm-10">
+                            @Html.DisplayFor(model => item.Level) /
+                            @Html.DisplayFor(model => item.Rate)
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+

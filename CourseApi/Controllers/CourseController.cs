@@ -54,13 +54,15 @@ namespace CourseApi.Controllers
         }
 
 
-        //getallByCourseName
+        //getallByCourseName (search)
         [HttpGet("get-all-courses-byName/{name}")]
         public IActionResult GetAllCoursesByName(string name)
         {
             var allCourses = _service.GetCourseByName(name);
             return Ok(allCourses);
         }
+
+
 
 
         //getallInstitutes
@@ -75,12 +77,12 @@ namespace CourseApi.Controllers
 
 
         //
-        [HttpGet("get-all")]
-        public IActionResult getall()
-        {
-            var allInstitutes = _service.GetAll();
-            return Ok(allInstitutes);
-        }
+        //[HttpGet("get-all")]
+        //public IActionResult getall()
+        //{
+        //    var allInstitutes = _service.GetAll();
+        //    return Ok(allInstitutes);
+        //}
 
 
     }

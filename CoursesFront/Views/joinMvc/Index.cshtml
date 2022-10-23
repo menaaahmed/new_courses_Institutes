@@ -23,12 +23,12 @@
 
     <form method="get" asp-action="filterByName" asp-controller="joinMvc">
         <select class="form-select form-outline col-6 mt-lg-5 ">
-            @foreach (var item in Model)
+            @foreach (var item in @ViewBag.AllInstuate)
             {
-            <option>
-
-                @Html.DisplayFor(model => item.Institute.InstituteName)
-            </option>
+                <option value="@item.InstituteId">
+                    @item.InstituteName
+                   
+                </option>
             }
         </select>
         <input type="submit" value="filter" class="btn btn-primary" />

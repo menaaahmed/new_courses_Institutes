@@ -52,7 +52,7 @@ namespace CourseApi.Services
             return _context.Courses.Include("Institute").FirstOrDefault(x => x.CourseId == id);
         }
 
-        //getAllCoursesByName
+        //getAllCoursesByName (search)
         public List<Course> GetCourseByName(string name)
         {
             return _context.Courses.Include("Institute").Where(x => x.CourseName == name).ToList();
@@ -69,17 +69,11 @@ namespace CourseApi.Services
 
 
 
-        //
-        public List<Course> GetAll()
-        {
-            //return _context.Courses.Include("Institute.InstituteName").ToList();
-            
+        
+        //public List<Course> GetAll()
+        //{
+        //    return _context.Courses.Include(x => x.Institute.InstituteName).ToList();
 
-            return _context.Courses.Include(x => x.Institute).ToList();
-
-            // return _context.Courses.Include(x => x.Institute).ThenInclude(p => p.InstituteName).ToList();
-
-
-        }
+        //}
     }
 }
