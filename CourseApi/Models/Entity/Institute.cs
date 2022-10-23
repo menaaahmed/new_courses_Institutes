@@ -16,5 +16,7 @@ namespace CourseApi.Models.Entity
 
         //relation
         public List<Course> Courses { get; set; }
+
+        
     }
 }

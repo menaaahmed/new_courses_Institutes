@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Data;
 
 namespace CourseApi.Services
 {
@@ -64,16 +65,20 @@ namespace CourseApi.Services
             return _context.Courses.Include("Institute").Where(x => x.Institute.InstituteName == name).ToList();
         }
 
-        //two
-        //public List<Institute> GetInstitutesTwo(string name)
-        //{
-        //    return _context.Institutes.Where(x => x.InstituteName == name).ToList();
-        //}
 
 
 
+        //
+        public List<Course> GetAll()
+        {
+            //return _context.Courses.Include("Institute.InstituteName").ToList();
+            
+
+            return _context.Courses.Include(x => x.Institute.InstituteName).ToList();
+
+            // return _context.Courses.Include(x => x.Institute).ThenInclude(p => p.InstituteName).ToList();
 
 
-
+        }
     }
 }

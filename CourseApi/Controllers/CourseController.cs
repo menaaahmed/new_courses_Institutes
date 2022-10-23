@@ -73,17 +73,14 @@ namespace CourseApi.Controllers
 
 
 
-        //getallInstitutes22
-        //[HttpGet("get-all-Institutes/{name}")]
-        //public IActionResult GetInstitutesTwo(string name)
-        //{
-        //    var allInstitutes = _service.GetInstitutesTwo(name);
-        //    return Ok(allInstitutes);
-        //}
 
-
-
-
+        //
+        [HttpGet("get-all")]
+        public IActionResult getall()
+        {
+            var allInstitutes = _service.GetAll();
+            return Ok(allInstitutes);
+        }
 
 
     }

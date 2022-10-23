@@ -8,7 +8,7 @@ namespace CourseApi.Models.viewModel
 {
     public class viewModel
     {
-        public IEnumerable<Course> Courses { get; set; }
-        public IEnumerable<Institute> institutes { get; set; }
+        //public IEnumerable<Course> Courses { get; set; }
+        //public IEnumerable<Institute> institutes { get; set; }
     }
 }

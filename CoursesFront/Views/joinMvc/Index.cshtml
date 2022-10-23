@@ -25,10 +25,10 @@
         <select class="form-select form-outline col-6 mt-lg-5 ">
             @foreach (var item in Model)
             {
-                <option>
+            <option>
 
-                    @Html.DisplayFor(model => item.Institute.InstituteName)
-                </option>
+                @Html.DisplayFor(model => item.Institute.InstituteName)
+            </option>
             }
         </select>
         <input type="submit" value="filter" class="btn btn-primary" />
@@ -40,29 +40,47 @@
 
 
 
-
-
     <div class="card-group mt-lg-5">
         @foreach (var item in Model)
         {
-<div class="col-lg-3 mb-4 ">
-    <div class="card">
-        <img class="card-img-top" src="/imgs/1.jpg">
-        @* <img src="Url.Content(item.Institute.InstitutephotoUrl)">*@
-        <div class="card-body ">
-            <h5 class="card-title">@Html.DisplayFor(model => item.CourseName)</h5>
-            <p class="col-sm-10">
-                @Html.DisplayFor(model => item.Institute.InstituteName)
-            </p>
-            <p class="col-sm-10">
-                @Html.DisplayFor(model => item.Level) /
-                @Html.DisplayFor(model => item.Rate)
-            </p>
+            <div class="col-lg-3 mb-4 ">
+                <div class="card">
+                    <img class="card-img-top" src="/imgs/1.jpg">
 
-        </div>
-    </div>
-</div>}
+                    <div class="card-body ">
+                        <h5 class="card-title">@Html.DisplayFor(model => item.CourseName)</h5>
+                        <p class="col-sm-10">
+                            @Html.DisplayFor(model => item.Institute.InstituteName)
+                        </p>
+                        <p class="col-sm-10">
+                            @Html.DisplayFor(model => item.Level) /
+                            @Html.DisplayFor(model => item.Rate)
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+          }
     </div>
 </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@* <img src="Url.Content(item.Institute.InstitutephotoUrl)">*@
 
