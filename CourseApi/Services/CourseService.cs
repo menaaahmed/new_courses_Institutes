@@ -64,6 +64,7 @@ namespace CourseApi.Services
         {
             return _context.Courses.Include("Institute").Where(x => x.Institute.InstituteName == name).ToList();
         }
+       
 
 
 
@@ -74,7 +75,7 @@ namespace CourseApi.Services
             //return _context.Courses.Include("Institute.InstituteName").ToList();
             
 
-            return _context.Courses.Include(x => x.Institute.InstituteName).ToList();
+            return _context.Courses.Include(x => x.Institute).ToList();
 
             // return _context.Courses.Include(x => x.Institute).ThenInclude(p => p.InstituteName).ToList();
 

@@ -41,6 +41,7 @@ namespace CourseApi
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "CourseApi", Version = "v1" });
             });
             services.AddTransient<CourseService>();
+            services.AddTransient<InstutuseService>();
            
             
         }

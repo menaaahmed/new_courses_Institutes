@@ -29,6 +29,17 @@ namespace CoursesFront.Controllers
                     ModelState.AddModelError(string.Empty, "there is an error");
                 };
 
+                var allInastuate = await client.GetAsync("http://localhost:49798/api/Course/get-all-courses");
+                if (responseTask.IsSuccessStatusCode)
+                {
+                    List<Course> listOFCourse = responseTask.Content.ReadAsAsync<List<Course>>().Result;
+                    course = listOFCourse;
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, "there is an error");
+                };
+
             }
             return View(course);
         }
