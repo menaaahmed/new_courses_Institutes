@@ -1,0 +1,68 @@
+﻿@model IEnumerable<CourseApi.Models.Entity.Course>
+
+@*@model CourseApi.Models.viewModel.viewModel*@
+
+
+
+<div class="container">
+    <form method="get" asp-action="searchByName" asp-controller="joinMvc">
+        <div class="input-group mt-lg-5">
+            <div class="form-outline">
+                <input type="search" name="search" placeholder="enter to search"
+                       value=" @ViewData["getCourse"]" class="form-control" />
+
+            </div>
+            <input type="submit" value="search" class="btn btn-primary" />
+            @*<i class="fas fa-search"></i>*@
+
+
+        </div>
+    </form>
+
+
+
+    <form method="get" asp-action="filterByName" asp-controller="joinMvc">
+        <select class="form-select form-outline col-6 mt-lg-5 ">
+            @foreach (var item in Model)
+            {
+                <option>
+
+                    @Html.DisplayFor(model => item.Institute.InstituteName)
+                </option>
+            }
+        </select>
+        <input type="submit" value="filter" class="btn btn-primary" />
+
+    </form>
+
+
+
+
+
+
+
+
+    <div class="card-group mt-lg-5">
+        @foreach (var item in Model)
+        {
+<div class="col-lg-3 mb-4 ">
+    <div class="card">
+        <img class="card-img-top" src="/imgs/1.jpg">
+        @* <img src="Url.Content(item.Institute.InstitutephotoUrl)">*@
+        <div class="card-body ">
+            <h5 class="card-title">@Html.DisplayFor(model => item.CourseName)</h5>
+            <p class="col-sm-10">
+                @Html.DisplayFor(model => item.Institute.InstituteName)
+            </p>
+            <p class="col-sm-10">
+                @Html.DisplayFor(model => item.Level) /
+                @Html.DisplayFor(model => item.Rate)
+            </p>
+
+        </div>
+    </div>
+</div>}
+    </div>
+</div>
+
+
