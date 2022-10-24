@@ -22,7 +22,7 @@
 
 <form id="formTwo" method="get" asp-action="filterByName" asp-controller="joinMvc">
     <select id="select" name="name">
-        <option value="" disabled selected> ALL </option>
+        <option value="" disabled selected> ALL.. </option>
         @foreach (var item in @ViewBag.AllInstuate)
         {
             <option value="@item.InstituteName">
@@ -30,7 +30,7 @@
             </option>
         }
     </select>
-    <button id="filter" type="submit" value="filter"> </button>
+    <button  type="submit" value="filter"> </button>
 </form>
 
 
@@ -38,11 +38,10 @@
 
 <div class="card-group mt-lg-5">
     @foreach (var item in Model)
-    {
+     {
         <div class="col-lg-3 mb-4 ">
             <div class="card">
-                @*<img class="card-img-top" src="/imgs/1.jpg">*@
-                <img src="@item.CoursePhotoUrl" class="card-img-top"  height="160" width="240" />
+                <img src="@item.CoursePhotoUrl"class="card-img-top"  height="160" width="240" />
                 <img src="@item.Institute.InstitutephotoUrl" height="70" width="70" />
                 <div class="card-body ">
                     <h4 class="card-title">@Html.DisplayFor(model => item.CourseName)</h4>
@@ -57,7 +56,7 @@
                 </div>
             </div>
         </div>
-    }
+     }
 </div>
 
 
