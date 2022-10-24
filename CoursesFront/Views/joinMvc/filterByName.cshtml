@@ -3,25 +3,23 @@
     ViewData["Title"] = "filterByName";
 }
 
-<h1>filterByName</h1>
-
-
-
-
 <div class="container">
+    <a asp-action="index">get All</a>
+    <h5 class="mt-4"> The Institute you selected contains: </h5>
     <div class="card-group mt-lg-5">
         @foreach (var item in Model)
         {
             <div class="col-lg-3 mb-4 ">
                 <div class="card">
-                    <img class="card-img-top" src="/imgs/1.jpg">
+                    <img src="@item.CoursePhotoUrl" height="160" width="240" />
+                    <img src="@item.Institute.InstitutephotoUrl" height="70" width="70" />
                     <div class="card-body ">
-                        <h5 class="card-title">@Html.DisplayFor(model => item.CourseName)</h5>
-                        @*<p class="col-sm-10">
-                            @Html.DisplayFor(model => item.Institute.InstituteName)
-                        </p>*@
+                        <h4 class="card-title">@Html.DisplayFor(model => item.CourseName)</h4>
                         <p class="col-sm-10">
-                            @Html.DisplayFor(model => item.Level) /
+                            @Html.DisplayFor(model => item.Institute.InstituteName)
+                        </p>
+                        <p class="col-sm-10">
+                            @Html.DisplayFor(model => item.Level) |
                             @Html.DisplayFor(model => item.Rate)
                         </p>
 

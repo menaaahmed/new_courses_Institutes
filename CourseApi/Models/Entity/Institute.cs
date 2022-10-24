@@ -15,7 +15,7 @@ namespace CourseApi.Models.Entity
         public string InstituteName { get; set; }
 
         //relation
-        public List<Course> Courses { get; set; }
+        public List<Course> Courses { get; set; } = new List<Course>();
 
         
     }

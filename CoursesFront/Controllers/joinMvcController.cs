@@ -31,13 +31,16 @@ namespace CoursesFront.Controllers
                 };
 
 
+
+
+                //getAllInstitutes
                 var allInastuate = await client.GetAsync("http://localhost:49798/get-all-institutes");
                 if (allInastuate.IsSuccessStatusCode)
                 {
-                    var listOFCourse = allInastuate.Content.ReadAsAsync<List<InstuateVM>>().Result;
-                    ViewBag.AllInstuates = new SelectList(listOFCourse, "instituteId", "instituteName");
+                    var listOFIns = allInastuate.Content.ReadAsAsync<List<InstuateVM>>().Result;
+                    //ViewBag.AllInstuates = new SelectList(listOFIns, "instituteId", "instituteName");
 
-                    ViewBag.AllInstuate = listOFCourse;
+                    ViewBag.AllInstuate = listOFIns;
                 }
                 else
                 {
@@ -82,6 +85,7 @@ namespace CoursesFront.Controllers
 
 
 
+
         //filter
         public async Task<IActionResult> filterByName(string name)
         {
@@ -100,6 +104,7 @@ namespace CoursesFront.Controllers
                 displayData.Wait();
                 instituteSearch = displayData.Result;
 
+                //ViewBag.x = displayData;
             }
             else
             {
