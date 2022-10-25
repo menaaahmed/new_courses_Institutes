@@ -60,27 +60,31 @@ namespace CoursesFront.Controllers
         //search
         public async Task<IActionResult> searchByName(string search)
         {
-            ViewData["getCourse"] = search;
-            IEnumerable<Course> courseSearch = null;
-            HttpClient hc = new HttpClient();
-
-            hc.BaseAddress = new Uri("http://localhost:49798/api/course/");
-            var result = hc.GetAsync("get-all-courses-byName/" + search);
-            result.Wait();
-
-            var readData = result.Result;
-            if (readData.IsSuccessStatusCode)
+            if (search != null)
             {
-                var displayData = readData.Content.ReadAsAsync<List<Course>>();
-                displayData.Wait();
-                courseSearch = displayData.Result;
+                ViewData["getCourse"] = search;
+                IEnumerable<Course> courseSearch = null;
+                HttpClient hc = new HttpClient();
 
+                hc.BaseAddress = new Uri("http://localhost:49798/api/course/");
+                var result = hc.GetAsync("get-all-courses-byName/" + search);
+                result.Wait();
+
+                var readData = result.Result;
+                if (readData.IsSuccessStatusCode)
+                {
+                    var displayData = readData.Content.ReadAsAsync<List<Course>>();
+                    displayData.Wait();
+                    courseSearch = displayData.Result;
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, "there is an error");
+                };
+                return View(courseSearch);
             }
-            else
-            {
-                ModelState.AddModelError(string.Empty, "there is an error");
-            };
-            return View(courseSearch);
+            else return RedirectToAction("Index");
+
         }
 
 
@@ -89,28 +93,29 @@ namespace CoursesFront.Controllers
         //filter
         public async Task<IActionResult> filterByName(string name)
         {
-
-            IEnumerable<Course> instituteSearch = null;
-            HttpClient hc = new HttpClient();
-
-            hc.BaseAddress = new Uri("http://localhost:49798/api/Course/");
-            var result = hc.GetAsync("get-all-Institutes-byName/" + name);
-            result.Wait();
-
-            var readData = result.Result;
-            if (readData.IsSuccessStatusCode)
+            if (name != null)
             {
-                var displayData = readData.Content.ReadAsAsync<List<Course>>();
-                displayData.Wait();
-                instituteSearch = displayData.Result;
+                IEnumerable<Course> instituteSearch = null;
+                HttpClient hc = new HttpClient();
 
-                //ViewBag.x = displayData;
+                hc.BaseAddress = new Uri("http://localhost:49798/api/Course/");
+                var result = hc.GetAsync("get-all-Institutes-byName/" + name);
+                result.Wait();
+
+                var readData = result.Result;
+                if (readData.IsSuccessStatusCode)
+                {
+                    var displayData = readData.Content.ReadAsAsync<List<Course>>();
+                    displayData.Wait();
+                    instituteSearch = displayData.Result;
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, "there is an error");
+                };
+                return View(instituteSearch);
             }
-            else
-            {
-                ModelState.AddModelError(string.Empty, "there is an error");
-            };
-            return View(instituteSearch);
+            else return RedirectToAction("Index");
         }
 
        
